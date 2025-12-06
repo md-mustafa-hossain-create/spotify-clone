@@ -59,7 +59,9 @@
 
 .library-footer {
   position: absolute;
+  left: 7px;
   bottom: 0;
+  padding: 10px 0;
   width: 100%;
   display: flex;
   font-size: 10px;
@@ -100,6 +102,22 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #252525;
+  position: relative;
+}
+
+.card:hover .play {
+  opacity: 1;
+  bottom: 140px;
+}
+
+.play {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 130px;
+  right: 17px;
+  opacity: 0;
+  transition: all 0.3s ease-out;
 }
 
 .card > * {
