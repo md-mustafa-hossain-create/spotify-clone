@@ -21,9 +21,6 @@
   width: 75vw;
 }
 
-.home {
-}
-
 .home ul li {
   display: flex;
   gap: 15px;
@@ -74,20 +71,26 @@
 
 .right {
   margin: 16px 0;
+  position: relative;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: rgb(34, 34, 34);
 }
 
 .header > * {
-  padding: 20px;
+  padding: 10px;
 }
 
 .spotifyPlaylist {
-  padding: 16px;
+  padding: 10px;
+}
+
+.spotifyPlaylist h1 {
+  font-size: 25px;
 }
 
 .cardContainer {
@@ -129,4 +132,48 @@
 .card img {
   width: 100%;
   object-fit: contain;
+}
+
+.signupBtn {
+  background-color: rgb(34, 34, 34);
+  color: rgb(125, 125, 125);
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+}
+
+.buttons > * {
+  margin: 0 12px;
+}
+
+.signupBtn:hover {
+  transform: scale(1.04);
+  color: white;
+}
+
+.loginBtn {
+  background-color: white;
+  padding: 15px 32px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+}
+
+.loginBtn:hover {
+  transform: scale(1.04);
+  font-weight: 900;
+}
+
+.playbar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: black;
+  width: 100%;
+  padding: 12px;
 }
