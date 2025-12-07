@@ -173,7 +173,12 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: black;
+  background-color: #1fdf64;
   width: 100%;
   padding: 12px;
+  display: flex;
+  justify-content: center;
+}
+.songsButtons img {
+  margin: 0 3x;
 }

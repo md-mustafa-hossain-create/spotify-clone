@@ -1,3 +1,38 @@
-document.querySelector('.right button').addEventListener('click', () => {
-    alert('Button clicked!');
-});
+async function getSongs() {
+  let a = await fetch("http://127.0.0.1:5500/songs/");
+
+  let response = await a.text();
+
+  let div = document.createElement("div");
+
+  div.innerHTML = response;
+
+  let as = div.getElementsByTagName("a");
+
+  let songs = [];
+  for (let index = 0; index < as.length; index++) {
+    const element = as[index];
+    if (element.href.endsWith(".mp3")) {
+      songs.push(element.href.split("/songs/")[1]);
+    }
+  }
+  return songs;
+}
+
+async function main() {
+  // get the list of all the songs
+  let songs = await getSongs();
+  console.log(songs);
+
+  //play the first song
+  let audio = new Audio("http://127.0.0.1:5500/songs/" + songs[0]);
+  //   audio.play();
+
+  //get the duration of the song
+  audio.addEventListener("loadeddata", () => {
+    let duration = audio.duration;
+    console.log(duration);
+  });
+}
+
+main();
