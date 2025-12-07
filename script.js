@@ -24,6 +24,26 @@ async function main() {
   let songs = await getSongs();
   console.log(songs);
 
+  document.querySelector(".songList ul").innerHTML = songs
+    .map((song) => {
+      return `<li>
+                <img
+                  class="invert"
+                  src="asset/music-logo.svg"
+                  alt="music logo"
+                />
+                <div class="info">
+                  <div>${song.replaceAll("%20", " ").split("128")[0]}</div>
+                  <div>artist name</div>
+                </div>
+                <div class="playnow">
+                  <span>Play Now</span>
+                  <img src="asset/play.svg" alt="play" />
+                </div>
+              </li>`;
+    })
+    .join(" ");
+
   //play the first song
   let audio = new Audio("http://127.0.0.1:5500/songs/" + songs[0]);
   //   audio.play();
