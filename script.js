@@ -43,16 +43,6 @@ async function main() {
               </li>`;
     })
     .join(" ");
-
-  //play the first song
-  let audio = new Audio("http://127.0.0.1:5500/songs/" + songs[0]);
-  //   audio.play();
-
-  //get the duration of the song
-  audio.addEventListener("loadeddata", () => {
-    let duration = audio.duration;
-    console.log(duration);
-  });
 }
 
 main();

@@ -173,9 +173,10 @@ body {
 
 .playbar {
   position: absolute;
+  height: 10vh;
   left: 0;
   bottom: 0;
-  background-color: #1fdf64;
+  background-color: #222222;
   width: 100%;
   padding: 12px;
   display: flex;
@@ -183,6 +184,7 @@ body {
 }
 .songsButtons img {
   margin: 0 3px;
+  filter: invert(1);
 }
 
 .songList {
@@ -191,8 +193,14 @@ body {
   margin-bottom: 44px;
   /* Scroll Shadow Effect - Sharp Line */
   background:
-    /* Shadow Cover (Moves with content - Top Layer) */ linear-gradient(#121212, #121212) center top,
-    /* The Shadow (Stationary 'Line' - Bottom Layer) */ linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%) center top;
+    /* Shadow Cover (Moves with content - Top Layer) */ linear-gradient(
+        #121212,
+        #121212
+      )
+      center top,
+    /* The Shadow (Stationary 'Line' - Bottom Layer) */
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%)
+      center top;
   background-repeat: no-repeat;
   background-size: 100% 40px, 100% 10px;
   background-attachment: local, scroll;
@@ -227,4 +235,25 @@ body {
   font-size: 15px;
   width: 87px;
   padding: 10px;
+}
+
+.seekbar {
+  height: 5px;
+  width: 100%;
+  margin: 6px;
+  background-color: white;
+  position: absolute;
+  bottom: 0px;
+  border-radius: 10px;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  position: relative;
+  bottom: 6px;
+  left: 0;
+  transition: left 0.5s;
 }
