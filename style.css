@@ -12,15 +12,39 @@ body {
   color: white;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .left {
+  height: calc(100vh - 95px);
   width: 25vw;
-  padding: 10px;
+  margin-top: 10px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.library {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
 }
 
 .right {
+  height: calc(100vh - 95px);
   width: 75vw;
+  margin-top: 10px;
+  background-color: #121212;
+  position: relative;
+  overflow-y: auto;
+  border-radius: 8px;
+}
+
+.library::-webkit-scrollbar,
+.right::-webkit-scrollbar {
+  width: 8px;
 }
 
 .home ul li {
@@ -50,7 +74,8 @@ body {
 }
 
 .library {
-  min-height: 76vh;
+  height: 100%;
+  min-height: unset;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -65,15 +90,12 @@ body {
   display: flex;
   font-size: 10px;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .library-footer a {
   color: gray;
-}
-
-.right {
-  margin: 16px 0;
-  position: relative;
+  text-decoration: none;
 }
 
 .header {
@@ -100,8 +122,6 @@ body {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  max-height: 70vh;
-  overflow: auto;
 }
 
 .card {
@@ -172,59 +192,118 @@ body {
 }
 
 .playbar {
-  position: absolute;
-  height: 10vh;
+  position: fixed;
+  bottom: 0px;
   left: 0;
-  bottom: 0;
-  background-color: #222222;
   width: 100%;
-  padding: 12px;
+  height: 75px;
+  background-color: #181818;
+  padding: 15px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #2a2a2a;
+}
+
+.songInfo {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  width: 250px;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.songsButtons {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
+
 .songsButtons img {
-  margin: 0 3px;
+  width: 30px;
+  cursor: pointer;
   filter: invert(1);
+  transition: all 0.2s ease;
+}
+
+.songsButtons img:hover {
+  transform: scale(1.1);
+}
+
+.songTime {
+  color: #a7a7a7;
+  font-size: 13px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.seekbar {
+  height: 6px;
+  width: 98%;
+  background-color: #4f4f4f;
+  position: absolute;
+  bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  left: 1%;
+}
+
+.circle {
+  width: 14px;
+  height: 14px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  left: 0%;
+  transition: left 0.1s linear;
 }
 
 .songList {
-  height: 64vh;
+  height: 60vh;
   overflow: auto;
-  margin-bottom: 44px;
-  /* Scroll Shadow Effect - Sharp Line */
-  background:
-    /* Shadow Cover (Moves with content - Top Layer) */ linear-gradient(
-        #121212,
-        #121212
-      )
-      center top,
-    /* The Shadow (Stationary 'Line' - Bottom Layer) */
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%)
+  margin-bottom: 80px;
+  background: linear-gradient(#121212, #121212) center top,
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%)
       center top;
   background-repeat: no-repeat;
   background-size: 100% 40px, 100% 10px;
   background-attachment: local, scroll;
-  /* Extend to full width of parent */
   margin: 0 -10px;
   padding: 0 10px;
 }
+
 .songList ul {
   padding: 0 10px;
 }
+
 .songList ul li {
   list-style-type: decimal;
   list-style-position: inside;
   display: flex;
   gap: 12px;
   cursor: pointer;
-  border: 1px solid white;
+  border: 1px solid #2a2a2a;
   margin: 12px 0;
   padding: 13px;
   border-radius: 5px;
+  transition: background-color 0.2s;
 }
+
+.songList ul li:hover {
+  background-color: #2a2a2a;
+  border-color: white;
+}
+
 .songList .info {
   font-size: 15px;
 }
+
 .playnow {
   display: flex;
   justify-content: center;
@@ -235,25 +314,4 @@ body {
   font-size: 15px;
   width: 87px;
   padding: 10px;
-}
-
-.seekbar {
-  height: 5px;
-  width: 100%;
-  margin: 6px;
-  background-color: white;
-  position: absolute;
-  bottom: 0px;
-  border-radius: 10px;
-}
-
-.circle {
-  width: 15px;
-  height: 15px;
-  background-color: white;
-  border-radius: 50%;
-  position: relative;
-  bottom: 6px;
-  left: 0;
-  transition: left 0.5s;
 }
