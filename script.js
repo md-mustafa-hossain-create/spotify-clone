@@ -1,3 +1,19 @@
+let currentSong = new Audio();
+
+function secondsToMinutes(seconds) {
+  if (isNaN(seconds) || seconds < 0) {
+    return "00:00";
+  }
+
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(remainingSeconds).padStart(2, "0");
+
+  return `${formattedMinutes}:${formattedSeconds}`;
+}
+
 async function getSongs() {
   let a = await fetch("http://127.0.0.1:5500/songs/");
 
@@ -19,10 +35,20 @@ async function getSongs() {
   return songs;
 }
 
+const playMusic = (track, pause = false) => {
+  currentSong.src = "/songs/" + track;
+  if (!pause) {
+    currentSong.play();
+    play.src = "asset/music-player-pause.svg";
+  }
+
+  document.querySelector(".songInfo").innerHTML = decodeURI(track);
+  document.querySelector(".songTime").innerHTML = "00:00 / 00:00";
+};
 async function main() {
   // get the list of all the songs
   let songs = await getSongs();
-  console.log(songs);
+  playMusic(songs[0], true);
 
   document.querySelector(".songList ul").innerHTML = songs
     .map((song) => {
@@ -33,7 +59,12 @@ async function main() {
                   alt="music logo"
                 />
                 <div class="info">
-                  <div>${song.replaceAll("%20", " ").split("128")[0]}</div>
+                  <div>${song
+                    .replaceAll("%20", " ")
+                    .replace("128 Kbps", "")
+                    .replace(".mp3", "")
+                    .replaceAll("- Copy", "")
+                    .trim()}</div>
                   <div>artist name</div>
                 </div>
                 <div class="playnow">
@@ -43,6 +74,33 @@ async function main() {
               </li>`;
     })
     .join(" ");
+
+  //Attach an event listener to each song
+  Array.from(
+    document.querySelector(".songList").getElementsByTagName("li")
+  ).forEach((listItem, index) => {
+    listItem.addEventListener("click", (e) => {
+      // Use the index to play the correct song from the original array
+      playMusic(songs[index]);
+    });
+  });
+  //Attach an event listner to play next and previous
+  play.addEventListener("click", () => {
+    if (currentSong.paused) {
+      currentSong.play();
+      play.src = "asset/music-player-pause.svg";
+    } else {
+      currentSong.pause();
+      play.src = "asset/music-player-play.svg";
+    }
+  });
+
+  //listen to the timeupdate event
+  currentSong.addEventListener("timeupdate", () => {
+    document.querySelector(".songTime").innerHTML = `${secondsToMinutes(
+      currentSong.currentTime
+    )} / ${secondsToMinutes(currentSong.duration)}`;
+  });
 }
 
 main();
