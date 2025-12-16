@@ -100,7 +100,7 @@ async function main() {
     document.querySelector(".songTime").innerHTML = `${secondsToMinutes(
       currentSong.currentTime
     )} / ${secondsToMinutes(currentSong.duration)}`;
-    //handle the progress bar
+    //handle the progress bard
     document.querySelector(".circle").style.left =
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
