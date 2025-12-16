@@ -110,6 +110,12 @@ async function main() {
     let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
     document.querySelector(".circle").style.left = percent + "%";
     currentSong.currentTime = (currentSong.duration * percent) / 100;
+
+    //Add an event lisitner hamburger
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".left").style.left = "0";
+      console.log("hamburger is cliked");
+    });
   });
 }
 

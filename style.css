@@ -325,6 +325,12 @@ body {
 .hamburger {
   display: none;
 }
+.hamburgerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
 
 @media (max-width: 1400px) {
   .left {
