@@ -334,12 +334,12 @@ body {
 
 @media (max-width: 1400px) {
   .left {
-    background-color: red;
     position: absolute;
     left: -100%;
     transition: all 0.3s;
     z-index: 1;
-    width: 233px;
+    width: 433px;
+    background-color: black;
   }
 
   .right {
@@ -355,5 +355,12 @@ body {
     cursor: pointer;
     width: 40px;
     height: 40px;
+  }
+
+  .left .close {
+    position: absolute;
+    right: 31px;
+    top: 25px;
+    width: 29px;
   }
 }
