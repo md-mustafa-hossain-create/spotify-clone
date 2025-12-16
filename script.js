@@ -107,7 +107,8 @@ async function main() {
 
   //Add a event listener to the progress bar
   document.querySelector(".seekbar").addEventListener("click", (e) => {
-    console.log(e.offsetX);
+    document.querySelector(".circle").style.left =
+      (e.offsetX / e.target.getBoundingClientRect().width) * 100 + "%";
   });
 }
 
