@@ -333,6 +333,9 @@ body {
   gap: 14px;
 }
 
+.close {
+  display: none;
+}
 @media (max-width: 1400px) {
   .left {
     position: absolute;
@@ -341,7 +344,17 @@ body {
     z-index: 1;
     width: 370px;
     background-color: black;
-    z-index: 11;
+    z-index: 1;
+  }
+
+  
+  .left .close {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    cursor: pointer;
   }
 
   .right {
@@ -359,12 +372,4 @@ body {
     height: 40px;
   }
 
-  .close {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 30px;
-    cursor: pointer;
-  }
 }
