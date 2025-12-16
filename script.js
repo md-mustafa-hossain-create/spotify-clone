@@ -104,6 +104,9 @@ async function main() {
     document.querySelector(".circle").style.left =
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
+
+  //Add a event listener to the progress bar 
+  
 }
 
 main();
