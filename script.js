@@ -109,7 +109,7 @@ async function main() {
   document.querySelector(".seekbar").addEventListener("click", (e) => {
     let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
     document.querySelector(".circle").style.left = percent + "%";
-    // Updates song playback time and UI position when the seekbar is clicked.
+    // Sets the current playback time of the song based on the seekbar's click position.
     currentSong.currentTime = (currentSong.duration * percent) / 100;
   });
 }
