@@ -4,8 +4,8 @@ const { execSync } = require("child_process");
 // 🤖 AI AUTO-COMMIT AGENT CONFIGURATION
 // ==========================================
 const CONFIG = {
-  checkIntervalMinutes: 5,
-  pushThresholdMinutes: 30, // Push to remote every 30 mins
+  checkIntervalMinutes: 15,
+  pushThresholdMinutes: 60, // Push to remote every 60 mins (adjusted for new interval)
   maxPendingCommits: 5, // Or push if we have 5 local commits accumulated
 };
 
