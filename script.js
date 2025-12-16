@@ -97,9 +97,11 @@ async function main() {
 
   //listen to the timeupdate event
   currentSong.addEventListener("timeupdate", () => {
-    document.querySelector(".songTime").innerHTML = `${secondsToMinutes(
-      currentSong.currentTime
-    )} / ${secondsToMinutes(currentSong.duration)}`;
+    document.querySelector(".songTime").innerHTML = `
+    <span class="curr">${secondsToMinutes(currentSong.currentTime)}</span>
+    <span class="slash">/</span>
+    <span class="dur">${secondsToMinutes(currentSong.duration)}</span>
+    `;
     //handle the progress bard
     document.querySelector(".circle").style.left =
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
