@@ -105,7 +105,7 @@ async function main() {
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
 
-  //Add a event listener to the progress bar
+  //Add eventlistner to the seekbar
   document.querySelector(".seekbar").addEventListener("click", (e) => {
     document.querySelector(".circle").style.left =
       (e.offsetX / e.target.getBoundingClientRect().width) * 100 + "%";
