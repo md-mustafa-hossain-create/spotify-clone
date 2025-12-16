@@ -325,6 +325,7 @@ body {
 .hamburger {
   display: none;
 }
+
 .hamburgerContainer {
   display: flex;
   align-items: center;
@@ -338,8 +339,9 @@ body {
     left: -100%;
     transition: all 0.3s;
     z-index: 1;
-    width: 433px;
+    width: 370px;
     background-color: black;
+    z-index: 11;
   }
 
   .right {
@@ -357,10 +359,12 @@ body {
     height: 40px;
   }
 
-  .left .close {
+  .close {
+    display: block;
     position: absolute;
-    right: 31px;
-    top: 25px;
-    width: 29px;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    cursor: pointer;
   }
 }
