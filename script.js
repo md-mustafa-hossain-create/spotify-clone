@@ -105,8 +105,10 @@ async function main() {
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
 
-  //Add a event listener to the progress bar 
-  s
+  //Add a event listener to the progress bar
+  document.querySelector(".seekbar").addEventListener("click", (e) => {
+    console.log(e);
+  });
 }
 
 main();
