@@ -316,3 +316,13 @@ body {
   width: 87px;
   padding: 10px;
 }
+
+@media (max-width: 1400px) {
+  .left {
+    background-color: blue;
+    position: absolute;
+    transition: all 0.3s;
+    z-index: 1;
+    
+  }
+}
