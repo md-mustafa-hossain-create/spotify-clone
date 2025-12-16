@@ -106,7 +106,7 @@ async function main() {
   });
 
   //Add a event listener to the progress bar 
-  
+  s
 }
 
 main();
