@@ -107,10 +107,9 @@ async function main() {
 
   //Add eventlistner to the seekbar
   document.querySelector(".seekbar").addEventListener("click", (e) => {
-    let percent = document.querySelector(".circle").style.left;
-    (e.offsetX / e.target.getBoundingClientRect().width) * 100;
-    percent + "%";
-    
+    let percent= (e.offsetX / e.target.getBoundingClientRect().width) * 100
+    document.querySelector(".circle").style.left =
+      (e.offsetX / e.target.getBoundingClientRect().width) * 100 + "%";
   });
 }
 
