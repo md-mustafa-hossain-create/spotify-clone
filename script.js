@@ -100,6 +100,8 @@ async function main() {
     document.querySelector(".songTime").innerHTML = `${secondsToMinutes(
       currentSong.currentTime
     )} / ${secondsToMinutes(currentSong.duration)}`;
+    document.querySelector(".circle").style.left =
+      (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
 }
 
