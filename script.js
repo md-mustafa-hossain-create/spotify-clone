@@ -1,4 +1,5 @@
 let currentSong = new Audio();
+let songs;
 
 function secondsToMinutes(seconds) {
   if (isNaN(seconds) || seconds < 0) {
@@ -51,7 +52,7 @@ const playMusic = (track, pause = false) => {
 };
 async function main() {
   // get the list of all the songs
-  let songs = await getSongs();
+  songs = await getSongs();
   // Play the first song by default or a random one, but paused initially
   playMusic(songs[Math.floor(Math.random() * songs.length)], true);
 
@@ -89,7 +90,7 @@ async function main() {
       playMusic(songs[index]);
     });
   });
-  //Attach an event listner to play next and previous
+  //Attach an event listner to play
   play.addEventListener("click", () => {
     if (currentSong.paused) {
       currentSong.play();
@@ -129,6 +130,13 @@ async function main() {
   });
 
   // Add event listeners to play the next and previous songs.
+  document.querySelector("#previous").addEventListener("click", () => {
+    console.log("clicked");
+  });
+
+  document.querySelector("#next").addEventListener("click", () => {
+    console.log("next");
+  });
 }
 
 main();
