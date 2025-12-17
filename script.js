@@ -43,7 +43,11 @@ const playMusic = (track, pause = false) => {
   }
 
   document.querySelector(".songInfo").innerHTML = decodeURI(track);
-  document.querySelector(".songTime").innerHTML = "00:00 / 00:00";
+  document.querySelector(".songTime").innerHTML = `
+    <span class="curr">00:00</span>
+    <span class="slash">/</span>
+    <span class="dur">00:00</span>
+  `;
 };
 async function main() {
   // get the list of all the songs

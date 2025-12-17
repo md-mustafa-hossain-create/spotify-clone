@@ -39,7 +39,7 @@ body {
   background-color: #121212;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
 }
@@ -367,10 +367,6 @@ body {
     border-radius: 0;
   }
 
-  .right .header {
-    border-radius: 0;
-  }
-
   .playbar {
     width: 100%;
     height: auto;
@@ -401,12 +397,13 @@ body {
   }
 
   .songTime {
-    width: 91.5%;
+    width: 90%;
     left: 5%;
     position: absolute;
     bottom: 5px;
     display: flex;
     justify-content: space-between;
+    padding: 0;
     font-size: 11px;
     color: #a7a7a7;
   }
