@@ -248,6 +248,25 @@ body {
   padding-right: 20px;
 }
 
+.volume {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.volume img {
+  width: 24px;
+  cursor: pointer;
+  filter: invert(1);
+  transition: all 0.2s ease;
+}
+
+.volume img:hover {
+  transform: scale(1.1);
+}
+
 .seekbar {
   height: 6px;
   width: 98%;

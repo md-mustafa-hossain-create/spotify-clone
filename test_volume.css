@@ -1,0 +1,11 @@
+.volume {
+  position: absolute;
+  right: 5%;
+  bottom: 35px;
+  width: auto;
+  padding: 0;
+}
+
+.volume img {
+  width: 20px;
+}
