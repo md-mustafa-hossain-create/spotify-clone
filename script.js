@@ -52,7 +52,8 @@ const playMusic = (track, pause = false) => {
 async function main() {
   // get the list of all the songs
   let songs = await getSongs();
-  playMusic(song[], true);
+  // Play the first song by default or a random one, but paused initially
+  playMusic(songs[Math.floor(Math.random() * songs.length)], true);
 
   document.querySelector(".songList ul").innerHTML = songs
     .map((song) => {
