@@ -311,6 +311,8 @@ body {
   list-style-type: decimal;
   list-style-position: inside;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 12px;
   cursor: pointer;
   border: 1px solid #2a2a2a;
@@ -327,6 +329,7 @@ body {
 
 .songList .info {
   font-size: 0.94rem;
+  flex: 1;
 }
 
 .playnow {
@@ -433,6 +436,18 @@ body {
     display: none;
   }
 
+  .volume {
+    position: absolute;
+    right: 6%;
+    bottom: 55px;
+    width: auto;
+    padding: 0;
+  }
+
+  .volume img {
+    width: 25px;
+  }
+
   .hamburger {
     display: block;
     cursor: pointer;
@@ -476,5 +491,11 @@ body {
 
   .library-footer {
     font-size: 0.56rem;
+  }
+}
+/* Hide Play Now text on narrower desktop screens where sidebar is tight */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .playnow span {
+    display: none;
   }
 }
