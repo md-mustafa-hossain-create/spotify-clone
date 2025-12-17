@@ -122,16 +122,16 @@ body {
 }
 
 .cardContainer {
-  margin: 30px;
+  margin: 2rem;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   flex-wrap: wrap;
   overflow: auto;
 }
 
 .card {
   width: 200px;
-  padding: 10px;
+  padding: 1rem;
   border-radius: 5px;
   background-color: #252525;
   position: relative;
@@ -346,10 +346,9 @@ body {
     position: absolute;
     left: -100%;
     transition: all ease 0.5s;
-    z-index: 1;
-    width: 370px;
+    z-index: 200;
+    width: 100vw;
     background-color: black;
-    z-index: 1;
   }
 
   .left .close {
@@ -421,10 +420,10 @@ body {
 
   .cardContainer {
     justify-content: center;
-    margin: 20px;
+    margin: 5vw;
   }
 
   .card {
-    width: 90vw;
+    width: 80vw;
   }
 }
