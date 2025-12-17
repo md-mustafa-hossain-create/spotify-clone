@@ -455,6 +455,11 @@ body {
     height: 40px;
   }
 
+  .leftNavArrow,
+  .rightNavArrow {
+    display: none;
+  }
+
   .cardContainer {
     justify-content: center;
     margin: 5vw;
@@ -498,4 +503,6 @@ body {
   .playnow span {
     display: none;
   }
+
+
 }
