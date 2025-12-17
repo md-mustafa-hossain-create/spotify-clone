@@ -52,7 +52,7 @@ const playMusic = (track, pause = false) => {
 async function main() {
   // get the list of all the songs
   let songs = await getSongs();
-  playMusic(songs[0], true);
+  playMusic(song[], true);
 
   document.querySelector(".songList ul").innerHTML = songs
     .map((song) => {
