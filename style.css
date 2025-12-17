@@ -38,12 +38,14 @@ body {
   margin-top: 10px;
   background-color: #121212;
   position: relative;
-  overflow-y: auto;
+  overflow: hidden;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .library::-webkit-scrollbar,
-.right::-webkit-scrollbar {
+.spotifyPlaylist::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -111,6 +113,8 @@ body {
 
 .spotifyPlaylist {
   padding: 10px;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .spotifyPlaylist h1 {
@@ -359,6 +363,12 @@ body {
 
   .right {
     width: 100vw;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .right .header {
+    border-radius: 0;
   }
 
   .playbar {
