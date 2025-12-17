@@ -127,6 +127,8 @@ async function main() {
   document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".left").style.left = "-100%";
   });
+
+  // Add event listeners to play the next and previous songs.
 }
 
 main();

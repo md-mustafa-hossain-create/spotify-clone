@@ -68,7 +68,7 @@ body {
   padding-top: 14px;
   align-items: center;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 0.81rem;
 }
 
 .heading img {
@@ -90,7 +90,7 @@ body {
   padding: 10px 0;
   width: 100%;
   display: flex;
-  font-size: 10px;
+  font-size: 0.625rem;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -118,7 +118,7 @@ body {
 }
 
 .spotifyPlaylist h1 {
-  font-size: 25px;
+  font-size: 1.56rem;
 }
 
 .cardContainer {
@@ -164,7 +164,7 @@ body {
 .signupBtn {
   background-color: rgb(34, 34, 34);
   color: rgb(125, 125, 125);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   border: none;
   outline: none;
@@ -214,7 +214,7 @@ body {
 .songInfo {
   color: white;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.88rem;
   width: 250px;
   padding-left: 20px;
   white-space: nowrap;
@@ -242,7 +242,7 @@ body {
 
 .songTime {
   color: #a7a7a7;
-  font-size: 13px;
+  font-size: 0.81rem;
   width: 250px;
   text-align: right;
   padding-right: 20px;
@@ -307,7 +307,7 @@ body {
 }
 
 .songList .info {
-  font-size: 15px;
+  font-size: 0.94rem;
 }
 
 .playnow {
@@ -317,7 +317,7 @@ body {
 }
 
 .playnow span {
-  font-size: 15px;
+  font-size: 0.94rem;
   width: 87px;
   padding: 10px;
 }
@@ -346,9 +346,11 @@ body {
     position: absolute;
     left: -100%;
     transition: left 0.5s ease;
-    z-index: 90;
+    z-index: 200;
     width: 100vw;
     background-color: black;
+    height: calc(100vh - 140px);
+    margin-top: 0;
   }
 
   .left .close {
@@ -364,6 +366,7 @@ body {
     width: 100vw;
     margin-top: 0;
     border-radius: 0;
+    height: calc(100vh - 140px);
   }
 
   .playbar {
@@ -403,7 +406,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0;
-    font-size: 11px;
+    font-size: 0.69rem;
     color: #a7a7a7;
   }
 
@@ -424,6 +427,35 @@ body {
   }
 
   .card {
-    width: 80vw;
+    width: calc(45% - 0.5rem);
+  }
+
+  .spotifyPlaylist h1 {
+    font-size: 1.25rem;
+  }
+
+  .heading {
+    font-size: 0.75rem;
+  }
+
+  .signupBtn {
+    font-size: 0.88rem;
+  }
+
+  .songInfo {
+    font-size: 0.81rem;
+    padding-left: 0.5rem;
+  }
+
+  .songList .info {
+    font-size: 0.81rem;
+  }
+
+  .playnow span {
+    font-size: 0.81rem;
+  }
+
+  .library-footer {
+    font-size: 0.56rem;
   }
 }
