@@ -132,17 +132,18 @@ async function main() {
   // Add event listeners to play the next and previous songs.
   document.querySelector("#previous").addEventListener("click", () => {
     let index = songs.indexOf(currentSong.src.split("/songs/")[1]);
-    if (index + 1 > length) {
+    if (index - 1 >= 0) {
       playMusic(songs[index - 1]);
     }
   });
 
   document.querySelector("#next").addEventListener("click", () => {
     let index = songs.indexOf(currentSong.src.split("/songs/")[1]);
-    if (index - 1 >= 0) {
-      playMusic(songs[index - 1]);
+    if (index + 1 < songs.length) {
+      playMusic(songs[index + 1]);
     }
   });
 }
+
 
 main();
