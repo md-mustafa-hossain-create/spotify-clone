@@ -227,6 +227,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 16px;
+  flex: 1;
 }
 
 .songsButtons img {
@@ -243,21 +244,22 @@ body {
 .timevol {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  gap: 25px; /* Added gap between time and volume */
+  flex: 1;
+  padding-right: 20px;
 }
 
 .songTime {
   color: #a7a7a7;
   font-size: 0.81rem;
-  width: 77px;
-  text-align: right;
+  white-space: nowrap;
 }
 
 .volume {
-  width: 100px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 20px;
+  gap: 12px;
 }
 
 .volume img {
@@ -265,6 +267,12 @@ body {
   cursor: pointer;
   filter: invert(1);
   transition: all 0.2s ease;
+}
+
+.volume input[type="range"] {
+  cursor: pointer;
+  accent-color: #1ed760; /* Spotify Green theme */
+  width: 100px;
 }
 
 .volume img:hover {
@@ -408,8 +416,8 @@ body {
 
   .songInfo {
     width: 100%;
+    padding: 0;
     text-align: center;
-    order: 1;
   }
 
   .songsButtons {
@@ -424,32 +432,26 @@ body {
     position: absolute;
   }
 
-  .songTime {
-    width: 90%;
-    left: 5%;
-    position: absolute;
-    bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    font-size: 0.69rem;
-    color: #a7a7a7;
+  .timevol {
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
   }
 
-  .slash {
-    display: none;
+  .songTime {
+    position: static;
+    width: auto;
+    text-align: center;
   }
 
   .volume {
-    position: absolute;
-    right: 6%;
-    bottom: 55px;
+    position: static;
     width: auto;
-    padding: 0;
   }
 
-  .volume img {
-    width: 25px;
+  .volume input[type="range"] {
+    width: 150px;
   }
 
   .hamburger {
