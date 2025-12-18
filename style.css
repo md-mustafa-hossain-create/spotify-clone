@@ -432,26 +432,36 @@ body {
     position: absolute;
   }
 
-  .timevol {
-    width: 100%;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 10px;
+  .songTime {
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    font-size: 0.69rem;
+    color: #a7a7a7;
   }
 
-  .songTime {
-    position: static;
-    width: auto;
-    text-align: center;
+  .slash {
+    display: none;
+  }
+
+  .timevol {
+    display: block; /* Disable flex centering on mobile to allow absolute positioning inside */
   }
 
   .volume {
-    position: static;
+    position: absolute;
+    right: 6%;
+    bottom: 55px;
     width: auto;
+    padding: 0;
   }
 
-  .volume input[type="range"] {
-    width: 150px;
+  .volume img {
+    width: 25px;
   }
 
   .hamburger {
