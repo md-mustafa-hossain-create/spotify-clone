@@ -203,7 +203,7 @@ body {
   width: 100%;
   height: 75px;
   background-color: #181818;
-  padding: 15px;
+  padding: 12px 15px 24px 15px;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -215,7 +215,7 @@ body {
   color: white;
   font-weight: bold;
   font-size: 0.88rem;
-  width: 250px;
+  flex: 1;
   padding-left: 20px;
   white-space: nowrap;
   overflow: hidden;
@@ -462,6 +462,11 @@ body {
 
   .volume img {
     width: 25px;
+  }
+
+  .volume input[type="range"] {
+    width: 18vw;
+    max-width: 100px;
   }
 
   .hamburger {
