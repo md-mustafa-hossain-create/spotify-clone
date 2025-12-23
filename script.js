@@ -215,6 +215,23 @@ async function main() {
     .addEventListener("change", (event) => {
       currentSong.volume = parseInt(event.target.value) / 100;
     });
+
+  //Add event listener to mute the track
+  document.querySelector(".volume>img").addEventListener("click", (e) => {
+    if (e.target.src.includes("volume.svg")) {
+      e.target.src = e.target.src.replace("volume.svg", "mute.svg");
+      currentSong.volume = 0;
+      document
+        .querySelector(".range")
+        .getElementsByTagName("input")[0].value = 0;
+    } else {
+      e.target.src = e.target.src.replace("mute.svg", "volume.svg");
+      currentSong.volume = 0.1;
+      document
+        .querySelector(".range")
+        .getElementsByTagName("input")[0].value = 10;
+    }
+  });
 }
 
 main();
