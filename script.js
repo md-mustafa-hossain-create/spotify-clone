@@ -99,26 +99,44 @@ async function displayAlbums() {
   div.innerHTML = response;
   let anchors = div.getElementsByTagName("a");
   let cardContainer = document.querySelector(".cardContainer");
-  Array.from(anchors).forEach(async (e) => {
+
+  let array = Array.from(anchors);
+  array.forEach(async (e) => {
     if (e.href.includes("/songs")) {
       let folder = e.href.split("/songs/")[1];
+
+      // Stop if folder is undefined or empty (happens for '.../songs/')
+      if (!folder) return;
+
+      // Remove trailing slash if present (some servers return 'bollywood/' instead of 'bollywood')
+      if (folder.endsWith("/")) {
+        folder = folder.slice(0, -1);
+      }
+
       //Get the meta data of the folder
       let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
       let response = await a.json();
       cardContainer.innerHTML =
         cardContainer.innerHTML +
-        `  <div class="card" data-folder="bollywood">
+        `  <div class="card" data-folder="${folder}">
               <div class="play">
                 <img src="asset/play.svg" alt="play" />
               </div>
               <img
-                src="${response.img}"
+                src="/songs/${folder}/${response.img}"
                 alt=""
               />
               <h2>${response.title}</h2>
-              <p>${response.discription}</p>
+              <p>${response.description}</p>
             </div>`;
     }
+  });
+
+  //load the playlist when card is clicked
+  Array.from(document.getElementsByClassName("card")).forEach((event) => {
+    event.addEventListener("click", async (items) => {
+      songs = await getSongs(`songs/${items.currentTarget.dataset.folder}`);
+    });
   });
 }
 
@@ -191,13 +209,6 @@ async function main() {
     .addEventListener("change", (event) => {
       currentSong.volume = parseInt(event.target.value) / 100;
     });
-
-  //load the playlist when card is clicked
-  Array.from(document.getElementsByClassName("card")).forEach((event) => {
-    event.addEventListener("click", async (items) => {
-      songs = await getSongs(`songs/${items.currentTarget.dataset.folder}`);
-    });
-  });
 }
 
 main();
