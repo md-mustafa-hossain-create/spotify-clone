@@ -101,12 +101,13 @@ async function displayAlbums() {
   let cardContainer = document.querySelector(".cardContainer");
 
   let array = Array.from(anchors);
-  array.forEach(async (e) => {
+  for (let index = 0; index < array.length; index++) {
+    let e = array[index];
     if (e.href.includes("/songs")) {
       let folder = e.href.split("/songs/")[1];
 
       // Stop if folder is undefined or empty (happens for '.../songs/')
-      if (!folder) return;
+      if (!folder) continue;
 
       // Remove trailing slash if present (some servers return 'bollywood/' instead of 'bollywood')
       if (folder.endsWith("/")) {
@@ -115,6 +116,10 @@ async function displayAlbums() {
 
       //Get the meta data of the folder
       let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
+
+      // If info.json is not found (e.g. it's not a album folder), skip it
+      if (!a.ok) continue;
+
       let response = await a.json();
       cardContainer.innerHTML =
         cardContainer.innerHTML +
@@ -130,12 +135,13 @@ async function displayAlbums() {
               <p>${response.description}</p>
             </div>`;
     }
-  });
+  }
 
   //load the playlist when card is clicked
   Array.from(document.getElementsByClassName("card")).forEach((event) => {
     event.addEventListener("click", async (items) => {
       songs = await getSongs(`songs/${items.currentTarget.dataset.folder}`);
+      playMusic(songs[0], true);
     });
   });
 }
