@@ -98,10 +98,26 @@ async function displayAlbums() {
   let div = document.createElement("div");
   div.innerHTML = response;
   let anchors = div.getElementsByTagName("a");
-  Array.from(anchors).forEach((e) => {
+  let cardContainer = document.querySelector(".cardContainer");
+  Array.from(anchors).forEach(async (e) => {
     if (e.href.includes("/songs")) {
-      let folder=(e.href.split("/songs/")[1]);
-      //Get the meta data of the folder 
+      let folder = e.href.split("/songs/")[1];
+      //Get the meta data of the folder
+      let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
+      let response = await a.json();
+      cardContainer.innerHTML =
+        cardContainer.innerHTML +
+        `  <div class="card" data-folder="bollywood">
+              <div class="play">
+                <img src="asset/play.svg" alt="play" />
+              </div>
+              <img
+                src="${response.img}"
+                alt=""
+              />
+              <h2>${response.title}</h2>
+              <p>${response.discription}</p>
+            </div>`;
     }
   });
 }
