@@ -135,6 +135,12 @@ body {
   border-radius: 5px;
   background-color: #252525;
   position: relative;
+  transition: all 0.9s;
+}
+
+.card:hover {
+  background-color: rgb(58, 58, 58);
+  cursor: pointer;
 }
 
 .card:hover .play {
@@ -523,5 +529,11 @@ body {
 @media (min-width: 1200px) and (max-width: 1600px) {
   .playnow span {
     display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    width: 80vw;
   }
 }

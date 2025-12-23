@@ -1,5 +1,6 @@
 let currentSong = new Audio();
 let songs;
+let currFolder;
 
 function secondsToMinutes(seconds) {
   if (isNaN(seconds) || seconds < 0) {
@@ -15,8 +16,9 @@ function secondsToMinutes(seconds) {
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-async function getSongs() {
-  let a = await fetch("http://127.0.0.1:5500/songs/");
+async function getSongs(folder) {
+  currFolder = folder;
+  let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
 
   let response = await a.text();
 
@@ -26,36 +28,15 @@ async function getSongs() {
 
   let as = div.getElementsByTagName("a");
 
-  let songs = [];
+  songs = [];
   for (let index = 0; index < as.length; index++) {
     const element = as[index];
     if (element.href.endsWith(".mp3")) {
-      songs.push(element.href.split("/songs/")[1]);
+      songs.push(element.href.split(`/${folder}/`)[1]);
     }
   }
-  return songs;
-}
 
-const playMusic = (track, pause = false) => {
-  currentSong.src = "/songs/" + track;
-  if (!pause) {
-    currentSong.play();
-    play.src = "asset/music-player-pause.svg";
-  }
-
-  document.querySelector(".songInfo").innerHTML = decodeURI(track);
-  document.querySelector(".songTime").innerHTML = `
-    <span class="curr">00:00</span>
-    <span class="slash">/</span>
-    <span class="dur">00:00</span>
-  `;
-};
-async function main() {
-  // get the list of all the songs
-  songs = await getSongs();
-  // Play the first song by default or a random one, but paused initially
-  playMusic(songs[Math.floor(Math.random() * songs.length)], true);
-
+  document.querySelector(".songList ul").innerHTML = "";
   document.querySelector(".songList ul").innerHTML = songs
     .map((song) => {
       return `<li>
@@ -90,6 +71,50 @@ async function main() {
       playMusic(songs[index]);
     });
   });
+
+  return songs;
+}
+
+const playMusic = (track, pause = false) => {
+  currentSong.src = `/${currFolder}/` + track;
+  if (!pause) {
+    currentSong.play();
+    play.src = "asset/music-player-pause.svg";
+  }
+
+  document.querySelector(".songInfo").innerHTML = decodeURI(track);
+  document.querySelector(".songTime").innerHTML = `
+    <span class="curr">00:00</span>
+    <span class="slash">/</span>
+    <span class="dur">00:00</span>
+  `;
+};
+
+async function displayAlbums() {
+  let a = await fetch(`http://127.0.0.1:5500/songs/`);
+
+  let response = await a.text();
+
+  let div = document.createElement("div");
+  div.innerHTML = response;
+  let anchors = div.getElementsByTagName("a");
+  Array.from(anchors).forEach((e) => {
+    if (e.href.includes("/songs")) {
+      let folder=(e.href.split("/songs/")[1]);
+      //Get the meta data of the folder 
+    }
+  });
+}
+
+async function main() {
+  // get the list of all the songs
+  await getSongs("songs/bollywood");
+  // Play the first song by default or a random one, but paused initially
+  playMusic(songs[Math.floor(Math.random() * songs.length)], true);
+
+  //display all the albums on the page
+  displayAlbums();
+
   //Attach an event listner to play
   play.addEventListener("click", () => {
     if (currentSong.paused) {
@@ -143,7 +168,20 @@ async function main() {
       playMusic(songs[index + 1]);
     }
   });
-}
 
+  document
+    .querySelector(".range")
+    .getElementsByTagName("input")[0]
+    .addEventListener("change", (event) => {
+      currentSong.volume = parseInt(event.target.value) / 100;
+    });
+
+  //load the playlist when card is clicked
+  Array.from(document.getElementsByClassName("card")).forEach((event) => {
+    event.addEventListener("click", async (items) => {
+      songs = await getSongs(`songs/${items.currentTarget.dataset.folder}`);
+    });
+  });
+}
 
 main();
