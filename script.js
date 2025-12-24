@@ -46,13 +46,7 @@ async function getSongs(folder) {
                   alt="music logo"
                 />
                 <div class="info">
-                  <div>${song
-                    .replaceAll("%20", " ")
-                    .replace("128 Kbps", "")
-                    .replace(".mp3", "")
-                    .replaceAll("- Copy", "")
-                    .trim()}</div>
-                  <div>artist name</div>
+                  <div>${decodeURIComponent(song).replace(".mp3", "")}</div>
                 </div>
                 <div class="playnow">
                   <span>Play Now</span>
