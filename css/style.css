@@ -123,15 +123,14 @@ body {
 
 .cardContainer {
   margin: 2rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  flex-wrap: wrap;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .card {
-  width: 200px;
-  min-width: 150px;
+  width: 100%;
   padding: 1rem;
   border-radius: 5px;
   background-color: #252525;
@@ -513,13 +512,13 @@ body {
   }
 
   .cardContainer {
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
     margin: 2rem 0;
     gap: 15px;
   }
 
   .card {
-    width: calc(45% - 0.5rem);
+    width: auto;
   }
 
   .spotifyPlaylist h1 {
@@ -559,7 +558,7 @@ body {
 }
 
 @media (max-width: 450px) {
-  .card {
-    width: 80vw;
+  .cardContainer {
+    grid-template-columns: 1fr;
   }
 }
