@@ -1,87 +1,102 @@
-# Spotify Clone — Minimal Web Player
+# Spotify Clone - Web-Based Audio Streaming Interface
 
-A lightweight, Spotify-inspired music player built with plain HTML, CSS and JavaScript. This project reproduces the look-and-feel of a Spotify desktop UI and includes a playlist, sidebar library, and basic playback controls — all implemented client-side without frameworks or a back-end.
+![Status](https://img.shields.io/badge/Status-Educational-yellow)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
-> This is a UI-focused demo for learning and presentation. It does not connect to the official Spotify API or any streaming service.
+## 📖 Project Overview
 
-Key languages (repo composition): CSS, JavaScript, HTML
+This is a high-fidelity **Spotify Clone** engineered with pure, vanilla web technologies. It replicates the core experience of a modern music streaming application without relying on heavy frontend frameworks or external APIs.
 
-## Features
-- Responsive two-column layout: sidebar (library) + main area (playlist)
-- Dynamically-generated playlist and sidebar song list
-- Playback controls: play/pause, next, previous
-- Seekbar with current time display
-- Volume control
-- Local audio playback from the `songs/` folder
-- No build step — open in a browser or serve as static files
+The application features a custom-built audio player engine, dynamic DOM manipulation for content rendering, and an asynchronous file system scanner that mimics backend data fetching. It is designed to demonstrate advanced DOM manipulation, event handling, and modern JavaScript (ES6+) concepts in a real-world scenario.
 
-## Tech stack
-- HTML5
-- CSS3 (styles split across `style.css` and `utility.css`)
-- Vanilla JavaScript (`script.js`)
-- Static assets in `asset/` (icons, images)
-- Local audio files in `songs/`
+## ✨ Key Features
 
-## Quick start
+*   **Dynamic Content Discovery**: Automatically scans the `songs/` directory to generate albums and playlists dynamically. No manual HTML updates required for new content.
+*   **Custom Audio Engine**: Built-in audio controller managing playback state, seek operations, and volume normalization.
+*   **Persistent Playback Controls**: Global footer player that persists navigation state across the application.
+*   **Responsive UI Architecture**: A mobile-responsive sidebar and grid layout using modern CSS Flexbox and utility classes.
+*   **Real-time Visual Feedback**: Interactive seek bars, volume sliders, and dynamic time updates (current time / duration).
+*   **Metadata Parsing**: Reads `info.json` manifests for rich album details (cover art, titles, descriptions).
 
-Prerequisites
-- Modern web browser (Chrome, Firefox, Edge, Safari)
-- Optional: a static server for best results (recommended)
+## 🛠 Tech Stack
 
-Clone the repository:
-```
-git clone https://github.com/md-mustafa-hossain-create/spotify-clone.git
-cd spotify-clone
-```
+*   **Core**: HTML5, CSS3, JavaScript (ES6+)
+*   **Styling**: Custom utility-first CSS architecture (`utility.css`) for modular design.
+*   **Data Transport**: `fetch` API for asynchronous resource loading.
+*   **Assets**: SVG iconography for resolution-independent visuals.
 
-Run locally
-- Quick (open directly):
-  - Open `index.html` in your browser.
-- Recommended (serve files):
-  - Python 3:
+## 🚀 Installation & Setup (Critical)
+
+**⚠️ Important:** This application uses hardcoded absolute paths for local development.
+
+To run this application successfully, you **must** serve it on port `5500`. The application explicitly fetches data from `http://127.0.0.1:5500/`.
+
+### Recommended Method: VS Code Live Server
+
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/md-mustafa-hossain-create/spotify-clone.git
+    cd spotify-clone
     ```
-    python -m http.server 8000
+
+2.  **Install "Live Server" Extension**
+    *   Open Visual Studio Code.
+    *   Go to Extensions (`Ctrl+Shift+X`).
+    *   Search for **"Live Server"** by Ritwick Dey and install it.
+
+3.  **Launch the Application**
+    *   Open `index.html` in the editor.
+    *   Click the **"Go Live"** button in the bottom right corner of VS Code.
+    *   **Verify Port:** Ensure the browser opens `http://127.0.0.1:5500/index.html` or `http://localhost:5500/index.html`.
+    *   *Note: If Live Server defaults to a different port, you must change it to 5500 in settings or update `script.js` to match your port.*
+
+## 📂 Data Management & Song Structure
+
+The application uses a specific file system convention to act as a database. To add new music, follow this structure:
+
+1.  **Create an Album Folder**:
+    Navigate to the `songs/` directory and create a new folder (e.g., `songs/my_new_album`).
+
+2.  **Add Metadata**:
+    Create a file named `info.json` inside your new folder with the following schema:
+    ```json
+    {
+      "title": "Album Title",
+      "description": "Album Description",
+      "img": "cover.jpg"
+    }
     ```
-    Open http://localhost:8000 in your browser.
-  - VS Code: use Live Server extension.
+    *Ensure you place a `cover.jpg` (or the image filename you specified) in the folder.*
 
-## Usage
-1. Place your audio files (MP3, OGG, etc.) into the `songs/` folder.
-2. Open the project in a browser or via a local server.
-3. Use the playbar to play/pause, skip tracks, seek within a track, and adjust volume.
-4. If tracks do not appear automatically, open `script.js` and update the songs array or loader to include your file names and metadata.
+3.  **Add Audio Files**:
+    Drop your `.mp3` files into the folder. The application will automatically detect and list them.
 
-## Project structure
-- index.html — main markup
-- style.css — core styles
-- utility.css — helper utility classes
-- script.js — playlist generation and player logic
-- asset/ — icons and images used in the UI
-- songs/ — local audio files (user-supplied)
+**Directory Tree Example:**
+```text
+songs/
+├── bollywood/
+│   ├── info.json
+│   ├── cover.jpg
+│   ├── song1.mp3
+│   └── song2.mp3
+├── rock_classics/
+│   ├── info.json
+│   ├── cover.jpg
+│   └── track1.mp3
+```
 
-## Customization
-- Playlist metadata (title, artist, cover) is defined in `script.js`. Edit the song objects to change content.
-- Replace assets in `asset/` to rebrand the UI.
-- Modify colors and layout in `style.css` to change theme.
-- Add keyboard shortcuts or additional features by editing `script.js`.
+## 🤝 Contributing
 
-## Notes & limitations
-- This is a static, client-side demo. There is no authentication, server, or streaming service integration.
-- Not integrated with Spotify services — for demo and learning only.
-- Avoid adding copyrighted audio to the repository. Keep audio files local or add them to .gitignore if you do not want them committed.
+Contributions are welcome! Please ensure you adhere to the project's folder structure conventions.
 
-## Contributing
-Contributions are welcome. Suggested workflow:
-1. Fork the repo.
-2. Create a branch: git checkout -b feature/your-feature
-3. Commit changes: git commit -m "Add feature"
-4. Push and open a pull request.
+1.  Fork the repository.
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
-Please provide clear descriptions and avoid committing large/audio files.
+## 📄 License
 
-## License
-MIT License — free to reuse and modify. (If you prefer a different license, tell me and I will update this section.)
-
-## Contact
-Repository owner: md-mustafa-hossain-create
-Repo URL: https://github.com/md-mustafa-hossain-create/spotify-clone
+Distributed under the MIT License. See `LICENSE` for more information.
